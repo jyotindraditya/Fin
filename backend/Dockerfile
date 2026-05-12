@@ -1,12 +1,11 @@
 # Build stage
-FROM eclipse-temurin:17-jdk-alpine AS builder
+FROM maven:3.9.6-eclipse-temurin-17-alpine AS builder
 WORKDIR /app
-COPY .mvn/ .mvn/
-COPY mvnw pom.xml ./
-# Make wrapper executable and download dependencies
-RUN chmod +x ./mvnw && ./mvnw dependency:go-offline
+COPY pom.xml ./
+# Download dependencies
+RUN mvn dependency:go-offline -B
 COPY src ./src
-RUN ./mvnw clean package -DskipTests
+RUN mvn clean package -DskipTests
 
 # Run stage
 FROM eclipse-temurin:17-jre-alpine

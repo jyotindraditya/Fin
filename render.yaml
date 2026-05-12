@@ -4,6 +4,7 @@ services:
     plan: free
     runtime: docker
     dockerfilePath: ./backend/Dockerfile
+    dockerContext: ./backend
     envVars:
       - key: SPRING_PROFILES_ACTIVE
         value: prod
