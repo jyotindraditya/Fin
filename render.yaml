@@ -29,11 +29,10 @@ services:
           property: password
     healthCheckPath: /actuator/health
 
-  - type: web
+  - type: static
     name: fintracker-frontend
-    env: static
     buildCommand: cd frontend && npm install && npm run build
-    staticPublishPath: ./frontend/dist
+    publishPath: ./frontend/dist
     envVars:
       - key: VITE_API_URL
         fromService:
