@@ -1,6 +1,7 @@
 services:
   - type: web
     name: fintracker-api
+    plan: free
     runtime: docker
     dockerfilePath: ./backend/Dockerfile
     envVars:
@@ -30,6 +31,7 @@ services:
 
   - type: web
     name: fintracker-frontend
+    plan: free
     env: static
     buildCommand: cd frontend && npm install && npm run build
     staticPublishPath: ./frontend/dist
