@@ -11,12 +11,12 @@ RUN mvn clean package -DskipTests
 FROM eclipse-temurin:17-jre-alpine
 WORKDIR /app
 
-RUN addgroup -S fintracker && adduser -S fintracker -G fintracker
+RUN addgroup -S fin && adduser -S fin -G fin
 
 COPY --from=builder /app/target/*.jar app.jar
 
-RUN chown fintracker:fintracker app.jar
-USER fintracker
+RUN chown fin:fin app.jar
+USER fin
 
 EXPOSE 8080
 

@@ -1,6 +1,6 @@
 services:
   - type: web
-    name: fintracker-api
+    name: fin-api
     plan: free
     runtime: docker
     dockerfilePath: ./backend/Dockerfile
@@ -10,35 +10,35 @@ services:
         value: prod
       - key: DB_HOST
         fromDatabase:
-          name: fintracker-db
+          name: fin-db
           property: host
       - key: DB_PORT
         fromDatabase:
-          name: fintracker-db
+          name: fin-db
           property: port
       - key: DB_NAME
         fromDatabase:
-          name: fintracker-db
+          name: fin-db
           property: database
       - key: DB_USER
         fromDatabase:
-          name: fintracker-db
+          name: fin-db
           property: user
       - key: DB_PASSWORD
         fromDatabase:
-          name: fintracker-db
+          name: fin-db
           property: password
       - key: JWT_SECRET
         generateValue: true
       - key: CORS_ALLOWED_ORIGIN
         fromService:
           type: web
-          name: fintracker-frontend
+          name: fin-frontend
           envVarKey: RENDER_EXTERNAL_URL
     healthCheckPath: /actuator/health
 
   - type: web
-    name: fintracker-frontend
+    name: fin-frontend
     runtime: static
     buildCommand: cd frontend && npm install && npm run build
     staticPublishPath: ./frontend/dist
@@ -46,11 +46,11 @@ services:
       - key: VITE_API_URL
         fromService:
           type: web
-          name: fintracker-api
+          name: fin-api
           envVarKey: RENDER_EXTERNAL_URL
 
 databases:
-  - name: fintracker-db
+  - name: fin-db
     plan: free
-    databaseName: fintracker
-    user: fintracker
+    databaseName: fin
+    user: fin

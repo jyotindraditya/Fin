@@ -12,9 +12,9 @@
     </parent>
 
     <groupId>com.fintracker</groupId>
-    <artifactId>fintracker-backend</artifactId>
+    <artifactId>fin-backend</artifactId>
     <version>1.0.0</version>
-    <name>FinTracker Backend</name>
+    <name>Fin Backend</name>
     <description>Production-ready expense tracker REST API</description>
 
     <properties>
