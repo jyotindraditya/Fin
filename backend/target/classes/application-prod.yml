@@ -15,7 +15,7 @@ logging:
     org.hibernate.SQL: WARN
 
 jwt:
-  secret: ${JWT_SECRET}
+  secret: ${JWT_SECRET:ZmludHJhY2tlci1wcm9kLXNlY3JldC1rZXktdGhhdC1pcy1hdC1sZWFzdC0yNTYtYml0cy1sb25n}
   access-expiration: 3600000
   refresh-expiration: 2592000000
 
