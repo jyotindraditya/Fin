@@ -67,7 +67,7 @@ export default function Dashboard() {
                   <div className="card-subtitle">This month's breakdown</div>
                 </div>
               </div>
-              <PieChart categories={categories} />
+              <PieChart categories={categories} currency={settings?.currency || 'USD'} />
             </div>
             <div className="card">
               <div className="card-header">

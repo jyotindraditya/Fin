@@ -1,13 +1,14 @@
 import ReactECharts from 'echarts-for-react';
+import { formatCurrency } from '../../utils/formatters';
 
-export default function PieChart({ categories }) {
+export default function PieChart({ categories, currency }) {
   const option = {
     tooltip: {
       trigger: 'item',
       backgroundColor: 'rgba(17, 24, 39, 0.95)',
       borderColor: 'rgba(255,255,255,0.1)',
       textStyle: { color: '#f9fafb', fontSize: 13 },
-      formatter: (p) => `${p.name}<br/><b>$${p.value.toLocaleString('en-US', { minimumFractionDigits: 2 })}</b> (${p.percent}%)`,
+      formatter: (p) => `${p.name}<br/><b>${formatCurrency(p.value, currency)}</b> (${p.percent}%)`,
     },
     legend: {
       orient: 'vertical',
