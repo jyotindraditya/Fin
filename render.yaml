@@ -1,0 +1,47 @@
+services:
+  - type: web
+    name: fintracker-api
+    runtime: docker
+    dockerfilePath: ./backend/Dockerfile
+    envVars:
+      - key: SPRING_PROFILES_ACTIVE
+        value: prod
+      - key: DB_HOST
+        fromDatabase:
+          name: fintracker-db
+          property: host
+      - key: DB_PORT
+        fromDatabase:
+          name: fintracker-db
+          property: port
+      - key: DB_NAME
+        fromDatabase:
+          name: fintracker-db
+          property: database
+      - key: DB_USER
+        fromDatabase:
+          name: fintracker-db
+          property: user
+      - key: DB_PASSWORD
+        fromDatabase:
+          name: fintracker-db
+          property: password
+    healthCheckPath: /actuator/health
+
+  - type: web
+    name: fintracker-frontend
+    env: static
+    buildCommand: cd frontend && npm install && npm run build
+    staticPublishPath: ./frontend/dist
+    envVars:
+      - key: VITE_API_URL
+        fromService:
+          type: web
+          name: fintracker-api
+          envVarKey: RENDER_EXTERNAL_URL
+
+databases:
+  - name: fintracker-db
+    plan: free
+    databaseName: fintracker
+    user: fintracker
