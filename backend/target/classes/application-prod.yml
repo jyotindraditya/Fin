@@ -13,3 +13,11 @@ logging:
   level:
     com.fintracker: INFO
     org.hibernate.SQL: WARN
+
+jwt:
+  secret: ${JWT_SECRET}
+  access-expiration: 3600000
+  refresh-expiration: 2592000000
+
+cors:
+  allowed-origin: ${CORS_ALLOWED_ORIGIN:*}

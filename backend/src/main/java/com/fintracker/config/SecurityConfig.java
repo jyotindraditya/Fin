@@ -24,6 +24,9 @@ public class SecurityConfig {
 
     private final JwtAuthFilter jwtAuthFilter;
 
+    @org.springframework.beans.factory.annotation.Value("${cors.allowed-origin:}")
+    private String corsAllowedOrigin;
+
     public SecurityConfig(JwtAuthFilter jwtAuthFilter) {
         this.jwtAuthFilter = jwtAuthFilter;
     }
@@ -48,7 +51,7 @@ public class SecurityConfig {
     @Bean
     public CorsConfigurationSource corsConfigurationSource() {
         CorsConfiguration config = new CorsConfiguration();
-        config.setAllowedOrigins(List.of(
+        java.util.ArrayList<String> origins = new java.util.ArrayList<>(List.of(
             "tauri://localhost",
             "https://tauri.localhost",
             "http://localhost:5173",
@@ -56,6 +59,10 @@ public class SecurityConfig {
             "http://127.0.0.1:5173",
             "http://127.0.0.1:1420"
         ));
+        if (corsAllowedOrigin != null && !corsAllowedOrigin.isBlank()) {
+            origins.add(corsAllowedOrigin);
+        }
+        config.setAllowedOrigins(origins);
         config.setAllowedMethods(List.of("GET", "POST", "PUT", "DELETE", "OPTIONS"));
         config.setAllowedHeaders(List.of("*"));
         config.setAllowCredentials(true);
