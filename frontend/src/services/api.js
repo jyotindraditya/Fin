@@ -5,7 +5,7 @@ import { authService } from './authService';
 const api = axios.create({
   baseURL: `${API_BASE_URL}/api`,
   headers: { 'Content-Type': 'application/json' },
-  timeout: 15000,
+  timeout: 90000,
 });
 
 // Request interceptor — attach JWT
