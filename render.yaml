@@ -31,10 +31,7 @@ services:
       - key: JWT_SECRET
         generateValue: true
       - key: CORS_ALLOWED_ORIGIN
-        fromService:
-          type: web
-          name: fin-frontend
-          envVarKey: RENDER_EXTERNAL_URL
+        value: https://fintracker-api-ipq4.onrender.com
     healthCheckPath: /actuator/health
 
   - type: web
@@ -44,10 +41,7 @@ services:
     staticPublishPath: ./frontend/dist
     envVars:
       - key: VITE_API_URL
-        fromService:
-          type: web
-          name: fin-api
-          envVarKey: RENDER_EXTERNAL_URL
+        value: https://fintracker-frontend-6uvz.onrender.com
 
 databases:
   - name: fin-db
