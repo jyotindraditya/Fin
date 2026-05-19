@@ -9,29 +9,19 @@ services:
       - key: SPRING_PROFILES_ACTIVE
         value: prod
       - key: DB_HOST
-        fromDatabase:
-          name: fin-db
-          property: host
+        value: db.wcmqmzjrncegrfmrkobm.supabase.co
       - key: DB_PORT
-        fromDatabase:
-          name: fin-db
-          property: port
+        value: "5432"
       - key: DB_NAME
-        fromDatabase:
-          name: fin-db
-          property: database
+        value: postgres
       - key: DB_USER
-        fromDatabase:
-          name: fin-db
-          property: user
+        value: postgres
       - key: DB_PASSWORD
-        fromDatabase:
-          name: fin-db
-          property: password
+        value: m3LlGv2kvx6j8ifg
       - key: JWT_SECRET
         generateValue: true
       - key: CORS_ALLOWED_ORIGIN
-        value: https://fintracker-frontend-6uvz.onrender.com
+        value: https://fin-frontend-6uvz.onrender.com
     healthCheckPath: /actuator/health
 
   - type: web
@@ -42,9 +32,3 @@ services:
     envVars:
       - key: VITE_API_URL
         value: https://fintracker-api-ipq4.onrender.com
-
-databases:
-  - name: fin-db
-    plan: free
-    databaseName: fin
-    user: fin
