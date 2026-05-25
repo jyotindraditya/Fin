@@ -6,8 +6,8 @@ This is a full stack web app(as of now) for tracking all your expenses. With a d
 <h3>Database:</h3> PostgreSQL
 <h3>Hosting:</h3> Render(Frontend, API, Database)
 <h3>Images:</h3>
-<img src="assets/fin1.png" width="600">
-<img src="assets/fin2.png" width="600">
-<img src="assets/fin3.png" width="600">
-<img src="assets/fin4.png" width="600">
-<img src="assets/fin5.png" width="600">
+<img src="frontend/assets/fin1.png" width="600">
+<img src="frontend/assets/fin2.png" width="600">
+<img src="frontend/assets/fin3.png" width="600">
+<img src="frontend/assets/fin4.png" width="600">
+<img src="frontend/assets/fin5.png" width="600">
